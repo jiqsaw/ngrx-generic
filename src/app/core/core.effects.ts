@@ -18,7 +18,7 @@ export class CoreEffects<T, V> {
 
 	public constructor(
 		private _actions$: Actions,
-		private service: CoreService<T>) { }
+		private service: PlanetsService) { }
 
 	@Effect()
 	get$: Observable<Action> = this._actions$
