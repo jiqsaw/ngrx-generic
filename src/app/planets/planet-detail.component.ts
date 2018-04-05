@@ -9,17 +9,21 @@ import { MODULES } from '../app.config';
 import { CoreComponent } from '../core/core.component';
 import { IPlanet } from './planets.model';
 import { IState } from '../core/core.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
 	selector: 'app-planet-detail',
 	template: `
 		<h3> PLANET DETAIL </h3>
-		<pre>{{ (state$ | async)?.data | json }}</pre>
+		<pre>{{ (data$ | async) | json }}</pre>
 	`
 })
 export class PlanetDetailComponent extends CoreComponent<IPlanet> implements OnInit {
 
-	constructor(protected _store: Store<IState<IPlanet>>) {
+	constructor(
+		private route: ActivatedRoute,
+		protected _store: Store<IState<IPlanet>>
+	) {
 
 		super(MODULES.PLANET, _store);
 	}
@@ -28,7 +32,11 @@ export class PlanetDetailComponent extends CoreComponent<IPlanet> implements OnI
 
 		// this.state$.subscribe((e: IState<IPlanet>) => console.log(e));
 
-		// this.dispatchGet();
+		this.route.params.subscribe(params => {
+			if (params['id'] !== undefined) {
+				this.dispatchGetById(params['id']);
+			}
+		});
 
 
 	}

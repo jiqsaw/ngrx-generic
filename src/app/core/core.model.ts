@@ -13,8 +13,8 @@ export interface IList<T> {
 
 export interface IState<T> {
 	isLoading: boolean;
-	data: T;
-	list: T[];
+	data: T[];
+	list: IList<T>;
 	error: HttpErrorResponse;
 	success: string;
 }

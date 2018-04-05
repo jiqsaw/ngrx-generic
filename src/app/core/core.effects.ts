@@ -7,7 +7,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 
-import { CoreActions } from './core.actions';
+import { CoreActions} from './core.actions';
 import { MODULES } from '../app.config';
 import { CoreService } from './core.service';
 
@@ -25,11 +25,11 @@ export class CoreEffects<T, TList> {
 		.switchMap((payload) => this._service.get())
 		.map((data: TList) => new CoreActions.GetSuccess(this.moduleName, data));
 
-	// @Effect()
-	// getById$: Observable<Action> = this.actions$
-	// 	.ofType(CoreActions.GET('PLANET'))
-	// 	.map((action: CoreActions.Get) => action)
-	// 	.switchMap((payload) => this.planetService.get())
-	// 	.map((data: T) => new CoreActions.GetSuccess(data));
+	@Effect()
+	getById$: Observable<Action> = this._actions$
+		.ofType(CoreActions.GET_BY_ID(this.moduleName.toString()))
+		.map((action: CoreActions.GetById) => action)
+		.switchMap((payload) => this._service.getById(payload.id))
+		.map((data: T[]) => new CoreActions.GetByIdSuccess(this.moduleName, data));
 
 }

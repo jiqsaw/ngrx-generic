@@ -19,18 +19,4 @@ export class PlanetsEffects extends CoreEffects<IPlanet, IPlanetList> {
 
 	}
 
-	// @Effect()
-	// get$: Observable<Action> = this.actions$
-	// 	.ofType(CoreActions.GET(MODULES.PLANET.toString()))
-	// 	.map((action: CoreActions.Get) => action)
-	// 	.switchMap((payload) => this.service.get())
-	// 	.map((data: IPlanetList) => new CoreActions.GetSuccess(MODULES.PLANET, data));
-
-	// @Effect()
-	// getById$: Observable<Action> = this.actions$
-	// 	.ofType(CoreActions.GET('PLANET'))
-	// 	.map((action: CoreActions.Get) => action)
-	// 	.switchMap((payload) => this.planetService.get())
-	// 	.map((data: T) => new CoreActions.GetSuccess(data));
-
 }

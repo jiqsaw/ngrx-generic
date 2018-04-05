@@ -12,8 +12,10 @@ export abstract class CoreComponent<T> {
 
 	getFractalState = createFeatureSelector<IState<T>>(MODULES[this.module]);
 	getState = createSelector(this.getFractalState, (state: IState<T>) => state);
+	getData = createSelector(this.getFractalState, (state: IState<T>): T => (state.data) ? state.data[0] : null);
 
 	state$: Store<IState<T>> = this.store.select(this.getState);
+	data$: Store<T> = this.store.select(this.getData);
 
 	constructor(
 		private module: MODULES,
@@ -23,6 +25,10 @@ export abstract class CoreComponent<T> {
 	protected dispatchGet() {
 
 		this.store.dispatch(new CoreActions.Get(this.module));
+	}
+
+	protected dispatchGetById(id: string) {
+		this.store.dispatch(new CoreActions.GetById(this.module, id));
 	}
 
 	protected extractId(url: string): string {
