@@ -8,9 +8,9 @@ import { PlanetDetailComponent } from './planets/planet-detail.component';
 export const routes: Routes = [
 
 	{ path: 'planets', component: PlanetsComponent },
-	{ path: 'planets/:id', component: PlanetDetailComponent },
+	{ path: 'planets/:id', component: PlanetDetailComponent }
 
-	{ path: '', redirectTo: '/planets', pathMatch: 'full' }
+	// { path: '', redirectTo: '/planets', pathMatch: 'full' }
 ];
 
 @NgModule({

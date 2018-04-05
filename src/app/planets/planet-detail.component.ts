@@ -14,8 +14,8 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
 	selector: 'app-planet-detail',
 	template: `
-		<h3> PLANET DETAIL </h3>
 		<pre>{{ (data$ | async) | json }}</pre>
+		<a routerLink="/planets"> < back </a>
 	`
 })
 export class PlanetDetailComponent extends CoreComponent<IPlanet> implements OnInit {

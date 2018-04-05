@@ -12,7 +12,7 @@ export abstract class CoreComponent<T> {
 
 	getFractalState = createFeatureSelector<IState<T>>(MODULES[this.module]);
 	getState = createSelector(this.getFractalState, (state: IState<T>) => state);
-	getData = createSelector(this.getFractalState, (state: IState<T>): T => (state.data) ? state.data[0] : null);
+	getData = createSelector(this.getFractalState, (state: IState<T>): T => (state.data) ? state.data[0] : <T>{});
 
 	state$: Store<IState<T>> = this.store.select(this.getState);
 	data$: Store<T> = this.store.select(this.getData);

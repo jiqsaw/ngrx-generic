@@ -13,7 +13,6 @@ import { IState } from '../core/core.model';
 @Component({
 	selector: 'app-planets',
 	template: `
-		<h3> PLANETS </h3>
 		<a [routerLink]="['/planets/', this.extractId(i.url)]" *ngFor="let i of (state$ | async)?.list?.results">{{ i.name }}</a>
 	`
 })
