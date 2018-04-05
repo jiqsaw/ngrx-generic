@@ -1,3 +1,3 @@
 export enum MODULES {
-	PLANET = <any>'Planet'
+	PLANET = <any>'Planet SW'
 }

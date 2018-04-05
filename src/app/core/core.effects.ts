@@ -11,19 +11,20 @@ import { CoreActions } from './core.actions';
 import { PlanetsService } from '../planets/planets.service';
 import { IPlanetList } from '../planets/planets.model';
 import { MODULES } from '../app.config';
+import { CoreService } from './core.service';
 
 @Injectable()
-export class CoreEffects<T> {
+export class CoreEffects<T, V> {
 
 	public constructor(
-		private actions$: Actions,
-		private planetService: PlanetsService) { }
+		private _actions$: Actions,
+		private service: CoreService<T>) { }
 
 	@Effect()
-	get$: Observable<Action> = this.actions$
-		.ofType(CoreActions.GET('PLANET'))
+	get$: Observable<Action> = this._actions$
+		.ofType(CoreActions.GET(MODULES.PLANET.toString()))
 		.map((action: CoreActions.Get) => action)
-		.switchMap((payload) => this.planetService.get())
+		.switchMap((payload) => this.service.get())
 		.map((data: IPlanetList) => new CoreActions.GetSuccess(MODULES.PLANET, data));
 
 	// @Effect()

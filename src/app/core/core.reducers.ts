@@ -19,12 +19,12 @@ export const reducer = (moduleName: MODULES) => {
 
 		switch (action.type) {
 
-			case CoreActions.GET(MODULES[moduleName]):
+			case CoreActions.GET(moduleName.toString()):
 				return Object.assign({}, state, {
 					isLoading: true,
 				});
 
-			case CoreActions.GET_SUCCESS(MODULES[moduleName]):
+			case CoreActions.GET_SUCCESS(moduleName.toString()):
 				return Object.assign({}, state, {
 					isLoading: false,
 					list: action.payload

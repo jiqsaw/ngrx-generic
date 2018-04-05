@@ -12,14 +12,14 @@ export module CoreActions {
 	export class Get implements ICoreAction {
 		readonly type;
 		constructor(moduleName: MODULES) {
-			this.type = GET(MODULES[moduleName]);
+			this.type = GET(moduleName.toString());
 		}
 	}
 
 	export class GetSuccess implements ICoreAction {
 		readonly type;
 		constructor(moduleName: MODULES, public payload: any) {
-			this.type = GET_SUCCESS(MODULES[moduleName]);
+			this.type = GET_SUCCESS(moduleName.toString());
 		}
 	}
 
