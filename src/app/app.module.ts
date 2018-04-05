@@ -17,6 +17,7 @@ import { reducers, metaReducers, CustomRouterStateSerializer } from './root/root
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { PlanetsModule } from './planets/planets.module';
+import { StarshipsModule } from './starships/starships.module';
 
 @NgModule({
 	declarations: [
@@ -37,8 +38,9 @@ import { PlanetsModule } from './planets/planets.module';
 		!environment.production ? StoreDevtoolsModule.instrument() : [],
 		EffectsModule.forRoot([]),
 
+		AppRoutingModule,
 		PlanetsModule,
-		AppRoutingModule
+		StarshipsModule
 	],
 	providers: [
 		{
