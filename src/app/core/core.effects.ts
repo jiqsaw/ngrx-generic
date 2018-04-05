@@ -8,24 +8,22 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 
 import { CoreActions } from './core.actions';
-import { PlanetsService } from '../planets/planets.service';
-import { IPlanetList } from '../planets/planets.model';
 import { MODULES } from '../app.config';
 import { CoreService } from './core.service';
 
-@Injectable()
-export class CoreEffects<T, V> {
+export class CoreEffects<T, TList> {
 
 	public constructor(
+		private moduleName: MODULES,
 		private _actions$: Actions,
-		private service: PlanetsService) { }
+		private _service: CoreService<T>) { }
 
 	@Effect()
 	get$: Observable<Action> = this._actions$
-		.ofType(CoreActions.GET(MODULES.PLANET.toString()))
+		.ofType(CoreActions.GET(this.moduleName.toString()))
 		.map((action: CoreActions.Get) => action)
-		.switchMap((payload) => this.service.get())
-		.map((data: IPlanetList) => new CoreActions.GetSuccess(MODULES.PLANET, data));
+		.switchMap((payload) => this._service.get())
+		.map((data: TList) => new CoreActions.GetSuccess(this.moduleName, data));
 
 	// @Effect()
 	// getById$: Observable<Action> = this.actions$

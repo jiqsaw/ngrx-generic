@@ -12,6 +12,7 @@ import { PlanetsService } from './planets.service';
 import { MODULES } from '../app.config';
 import { CoreEffects } from '../core/core.effects';
 import { PlanetDetailComponent } from './planet-detail.component';
+import { PlanetsEffects } from './planets.effects';
 
 @NgModule({
 	imports: [
@@ -20,7 +21,7 @@ import { PlanetDetailComponent } from './planet-detail.component';
 		RouterModule,
 		StoreModule.forFeature(MODULES[MODULES.PLANET], reducer(MODULES.PLANET)),
 		EffectsModule.forFeature([
-			CoreEffects
+			PlanetsEffects
 		])
 	],
 	declarations: [
