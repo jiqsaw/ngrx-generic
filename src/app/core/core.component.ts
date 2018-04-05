@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { CoreActions } from '../core/core.actions';
 
 import { MODULES } from '../app.config';
-import { IEntity, IState } from './core.model';
+import { IEntity, IState, IList } from './core.model';
 
 @Component({})
 export abstract class CoreComponent<T> {
@@ -13,9 +13,11 @@ export abstract class CoreComponent<T> {
 	getFractalState = createFeatureSelector<IState<T>>(MODULES[this.module]);
 	getState = createSelector(this.getFractalState, (state: IState<T>) => state);
 	getData = createSelector(this.getFractalState, (state: IState<T>): T => (state.data) ? state.data[0] : <T>{});
+	getList = createSelector(this.getFractalState, (state: IState<T>): IList<T> => (state.list) ? state.list : <IList<T>>{});
 
 	state$: Store<IState<T>> = this.store.select(this.getState);
 	data$: Store<T> = this.store.select(this.getData);
+	list$: Store<IList<T>> = this.store.select(this.getList);
 
 	constructor(
 		private module: MODULES,
@@ -23,7 +25,6 @@ export abstract class CoreComponent<T> {
 	) { }
 
 	protected dispatchGet() {
-
 		this.store.dispatch(new CoreActions.Get(this.module));
 	}
 

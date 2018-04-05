@@ -10,7 +10,7 @@ import { IState } from '../core/core.model';
 	selector: 'app-planets',
 	template: `
 		<h4> planets </h4>
-		<a [routerLink]="['/planets/', this.extractId(i.url)]" *ngFor="let i of (state$ | async)?.list?.results">{{ i.name }}</a>
+		<a [routerLink]="['/planets/', this.extractId(i.url)]" *ngFor="let i of (list$ | async).results">{{ i.name }}</a>
 	`
 })
 export class PlanetsComponent extends CoreComponent<IPlanet> implements OnInit {
