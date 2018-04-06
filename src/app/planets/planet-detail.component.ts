@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-import { CoreActions } from '../core/core.actions';
-import * as coreStore from '../core/core.reducers';
-
 import { MODULES } from '../app.config';
 import { CoreComponent } from '../core/core.component';
 import { IPlanet } from './planets.model';

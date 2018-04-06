@@ -7,7 +7,7 @@ import { IState } from './core.model';
 
 export const reducer = (moduleName: MODULES) => {
 
-	return function handler(state: IState<any> = null, action: CoreActions.ICoreAction) {
+	return (state: IState<any> = null, action: CoreActions.ICoreAction) => {
 
 		switch (action.type) {
 

@@ -6,7 +6,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterModule } from '@angular/router';
 
-import { reducer } from '../core/core.reducers';
+import { reducer } from '../core/core.reducer';
 import { PlanetsComponent } from './planets.component';
 import { PlanetsService } from './planets.service';
 import { MODULES } from '../app.config';

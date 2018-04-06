@@ -10,7 +10,7 @@ import * as fromRoot from './root/root.reducer';
 	template: `
 	<nav>
 		<a routerLink='/planets/'>PLANETS</a>
-		<a routerLink='/starships/'>STARSHIPSs</a>
+		<a routerLink='/starships/'>STARSHIPS</a>
 	</nav>
 		<router-outlet></router-outlet>
 	`,
